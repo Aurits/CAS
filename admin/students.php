@@ -301,8 +301,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 									<thead>
 										<tr>
 											<th>First Name</th>
-											<th class="d-none d-xl-table-cell">Last Name</th>
-											<th class="d-none d-xl-table-cell">Email</th>
+											<th class="">Last Name</th>
+											<th class="">Email</th>
 											<th class="d-none d-md-table-cell">Phone</th>
 										</tr>
 									</thead>
@@ -310,8 +310,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 										<?php while ($row = $result->fetch_assoc()) : ?>
 											<tr>
 												<td><?= $row['firstName'] ?></td>
-												<td class="d-none d-xl-table-cell"><?= $row['lastName'] ?></td>
-												<td class="d-none d-xl-table-cell"><?= $row['emailAddress'] ?></td>
+												<td class=""><?= $row['lastName'] ?></td>
+												<td class=""><?= $row['emailAddress'] ?></td>
 												<td class="d-none d-md-table-cell"><?= $row['contactNumber'] ?></td>
 											</tr>
 										<?php endwhile; ?>

@@ -332,7 +332,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 										<tr>
 											<th>Name</th>
 											<th class="d-none d-xl-table-cell">Email</th>
-											<th class="d-none d-xl-table-cell">Phone</th>
+											<th class="">Phone</th>
 
 											<th class="d-none d-md-table-cell">Message</th>
 										</tr>
@@ -342,7 +342,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											<tr>
 												<td><?= $row['name'] ?></td>
 												<td class="d-none d-xl-table-cell"><?= $row['emailAddress'] ?></td>
-												<td class="d-none d-xl-table-cell"><?= $row['phoneNumber'] ?></td>
+												<td class=""><?= $row['phoneNumber'] ?></td>
 
 												<td class="d-none d-md-table-cell"><?= $row['message'] ?></td>
 											</tr>

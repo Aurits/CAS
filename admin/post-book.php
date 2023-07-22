@@ -347,10 +347,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 									<thead>
 										<tr>
 											<th>Title</th>
-											<th class="d-none d-xl-table-cell">Author</th>
+											<th class="">Author</th>
 											<th class="d-none d-xl-table-cell">Description</th>
 											<!-- <th class="d-none d-md-table-cell">URL</th> -->
-											<th class="d-none d-md-table-cell">StaffID</th>
+											<th class="">StaffID</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -370,10 +370,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											while ($row = $result->fetch_assoc()) {
 												echo '<tr>';
 												echo '<td>' . $row['title'] . '</td>';
-												echo '<td class="d-none d-xl-table-cell">' . $row['author'] . '</td>';
+												echo '<td class="">' . $row['author'] . '</td>';
 												echo '<td class="d-none d-xl-table-cell">' . $row['description'] . '</td>';
 												// echo '<td class="d-none d-md-table-cell">' . $row['audioBookUrl'] . '</td>';
-												echo '<td class="d-none d-md-table-cell">' . $row['staffId'] . '</td>';
+												echo '<td class="">' . $row['staffId'] . '</td>';
 												echo '<td><a href="view-book.php?id=' . $row['bookId'] . '" class="badge bg-danger">Manage</a></td>';
 												echo '</tr>';
 											}

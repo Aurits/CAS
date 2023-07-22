@@ -300,8 +300,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 										<tr>
 											<th>Staff ID</th>
 											<th>First Name</th>
-											<th class="d-none d-xl-table-cell">Last Name</th>
-											<th class="d-none d-xl-table-cell">Email</th>
+											<th class="">Last Name</th>
+											<th class="">Email</th>
 											<th class="d-none d-md-table-cell">Phone</th>
 										</tr>
 									</thead>
@@ -312,8 +312,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											echo "<tr>";
 											echo "<td>" . $row["staffId"] . "</td>";
 											echo "<td>" . $row["firstName"] . "</td>";
-											echo "<td class='d-none d-xl-table-cell'>" . $row["lastName"] . "</td>";
-											echo "<td class='d-none d-xl-table-cell'>" . $row["emailAddress"] . "</td>";
+											echo "<td class=''>" . $row["lastName"] . "</td>";
+											echo "<td class=''>" . $row["emailAddress"] . "</td>";
 											echo "<td class='d-none d-md-table-cell'>" . $row["contactNumber"] . "</td>";
 											echo "</tr>";
 										}

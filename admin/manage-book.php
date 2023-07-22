@@ -276,8 +276,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					<h1 class="h3 mb-3"><strong>Books</strong></h1>
 					<div class="row">
 						<?php foreach ($latest_books as $book) : ?>
-							<div class="col-6 col-md-4">
-								<div class="card">
+							<div class="col-6 col-sm-12 col-md-4">
+								
 									<img class="card-img-top" src="../img/photos/unsplash-1.jpg" alt="Cover Page">
 									<div class="card-header">
 										<h5 class="card-title mb-0"><?php echo $book['title']; ?></h5>
@@ -289,7 +289,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											<button type="submit" name="delete" class="btn btn-danger">DELETE</button>
 										</form>
 									</div>
-								</div>
+								
 							</div>
 						<?php endforeach; ?>
 

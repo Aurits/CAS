@@ -230,6 +230,37 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 				</div>
 			</nav>
 
+
+			<?php
+			// Include connection
+			require_once "./config.php";
+
+			// Get the total number of students
+			$stmt = $conn->prepare("SELECT COUNT(*) AS total_students FROM VisuallyImpairedStudent");
+			$stmt->execute();
+			$result1 = $stmt->get_result();
+			$totalStudents = $result1->fetch_assoc()['total_students'];
+
+						// Get the total number of students
+			$stmt = $conn->prepare("SELECT COUNT(*) AS total_students FROM Book");
+			$stmt->execute();
+			$result2 = $stmt->get_result();
+			$books = $result2->fetch_assoc()['books'];
+
+						// Get the total number of students
+			$stmt = $conn->prepare("SELECT COUNT(*) AS total_students FROM Contact");
+			$stmt->execute();
+			$result3 = $stmt->get_result();
+			$contacts = $result3->fetch_assoc()['contacts'];
+
+						// Get the total number of students
+			$stmt = $conn->prepare("SELECT COUNT(*) AS total_students FROM LibraryStaff");
+			$stmt->execute();
+			$result4 = $stmt->get_result();
+			$staff = $result4->fetch_assoc()['staff'];
+
+			?>
+
 			<main class="content">
 				<div class="container-fluid p-0">
 
@@ -244,18 +275,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Sales</h5>
+														<h5 class="card-title">Book Posts</h5>
 													</div>
 
 													<div class="col-auto">
 														<div class="stat text-primary">
-															<i class="align-middle" data-feather="truck"></i>
+															<i class="align-middle" data-feather="book"></i>
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">2.382</h1>
+												<h1 class="mt-1 mb-3"><?= $books ?></h1>
 												<div class="mb-0">
-													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
+													
 													<span class="text-muted">Since last week</span>
 												</div>
 											</div>
@@ -264,7 +295,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Visitors</h5>
+														<h5 class="card-title">Students</h5>
 													</div>
 
 													<div class="col-auto">
@@ -273,9 +304,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">14.212</h1>
+												<h1 class="mt-1 mb-3"><?= $totalStudents ?></h1>
 												<div class="mb-0">
-													<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 5.25% </span>
+													
 													<span class="text-muted">Since last week</span>
 												</div>
 											</div>
@@ -286,18 +317,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Earnings</h5>
+														<h5 class="card-title">Staff</h5>
 													</div>
 
 													<div class="col-auto">
 														<div class="stat text-primary">
-															<i class="align-middle" data-feather="dollar-sign"></i>
+															<i class="align-middle" data-feather="users"></i>
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">$21.300</h1>
+												<h1 class="mt-1 mb-3"><?= $staff ?></h1>
 												<div class="mb-0">
-													<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span>
+													
 													<span class="text-muted">Since last week</span>
 												</div>
 											</div>
@@ -306,18 +337,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Orders</h5>
+														<h5 class="card-title">Messages</h5>
 													</div>
 
 													<div class="col-auto">
 														<div class="stat text-primary">
-															<i class="align-middle" data-feather="shopping-cart"></i>
+															<i class="align-middle" data-feather="message-square"></i>
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">64</h1>
+												<h1 class="mt-1 mb-3"><?= $contacts ?></h1>
 												<div class="mb-0">
-													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.25% </span>
+													
 													<span class="text-muted">Since last week</span>
 												</div>
 											</div>
@@ -331,7 +362,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Recent Movement</h5>
+									<h5 class="card-title mb-0">Trends</h5>
 								</div>
 								<div class="card-body py-3">
 									<div class="chart chart-sm">
@@ -343,86 +374,61 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="row" >
 						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-
-									<h5 class="card-title mb-0">Latest Projects</h5>
+									<h5 class="card-title mb-0">Latest Books</h5>
 								</div>
 								<table class="table table-hover my-0">
 									<thead>
 										<tr>
-											<th>Name</th>
-											<th class="d-none d-xl-table-cell">Start Date</th>
-											<th class="d-none d-xl-table-cell">End Date</th>
-											<th>Status</th>
-											<th class="d-none d-md-table-cell">Assignee</th>
+											<th>Title</th>
+											<th class="">Author</th>
+											<th class="d-none d-xl-table-cell">Description</th>
+											<!-- <th class="d-none d-md-table-cell">URL</th> -->
+											<th class="">StaffID</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Project Apollo</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-										</tr>
-										<tr>
-											<td>Project Fireball</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-danger">Cancelled</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-										</tr>
-										<tr>
-											<td>Project Hades</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Sharon Lessman</td>
-										</tr>
-										<tr>
-											<td>Project Nitro</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-warning">In progress</span></td>
-											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-										</tr>
-										<tr>
-											<td>Project Phoenix</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-										</tr>
-										<tr>
-											<td>Project X</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Sharon Lessman</td>
-										</tr>
-										<tr>
-											<td>Project Romeo</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Christina Mason</td>
-										</tr>
-										<tr>
-											<td>Project Wombat</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-warning">In progress</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-										</tr>
+										<?php
+										// Assuming you have a database connection established
+										// Include connection
+										require_once "./config.php";
+
+										// Prepare and execute the SQL query to select data from the Book table
+										$sql = "SELECT * FROM Book";
+										$result = $conn->query($sql);
+
+										// Check if the query was successful
+										if ($result) {
+											// Loop through the data and display each row in the table
+											while ($row = $result->fetch_assoc()) {
+												echo '<tr>';
+												echo '<td>' . $row['title'] . '</td>';
+												echo '<td class="">' . $row['author'] . '</td>';
+												echo '<td class="d-none d-xl-table-cell">' . $row['description'] . '</td>';
+												// echo '<td class="d-none d-md-table-cell">' . $row['audioBookUrl'] . '</td>';
+												echo '<td class="">' . $row['staffId'] . '</td>';
+												echo '<td><a href="view-book.php?id=' . $row['bookId'] . '" class="badge bg-danger">Manage</a></td>';
+												echo '</tr>';
+											}
+
+											// Free the result set
+											$result->free();
+										} else {
+											echo '<tr><td colspan="6">Error: ' . $conn->error . '</td></tr>';
+										}
+
+										// Close the database connection
+										$conn->close();
+										?>
 									</tbody>
 								</table>
 							</div>
 						</div>
-
-
+			
 
 
 					</div>
