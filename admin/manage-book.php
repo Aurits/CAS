@@ -4,8 +4,8 @@ session_start();
 
 # If user is not logged in then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-  echo "<script>" . "window.location.href='./pages-sign-in.php';" . "</script>";
-  exit;
+	echo "<script>" . "window.location.href='./pages-sign-in.php';" . "</script>";
+	exit;
 }
 ?>
 
@@ -34,8 +34,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="index.php">
-          <span class="align-middle">Admin</span>
-        </a>
+					<span class="align-middle">Admin</span>
+				</a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
@@ -44,26 +44,26 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item active">
 						<a class="sidebar-link" href="index.php">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-sign-in.php">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-            </a>
+							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-sign-up.php">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-            </a>
+							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="logout.php">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Logout</span>
-            </a>
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Logout</span>
+						</a>
 					</li>
 
 					<li class="sidebar-header">
@@ -72,46 +72,46 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="post-book.php">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
-            </a>
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="manage-book.php">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Book</span>
-            </a>
+							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Book</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="messages.php">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">All Messages</span>
-            </a>
+							<i class="align-middle" data-feather="grid"></i> <span class="align-middle">All Messages</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="students.php">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Students</span>
-            </a>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Students</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="staff.php">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Staff</span>
-            </a>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Staff</span>
+						</a>
 					</li>
 
 
 				</ul>
 
-				
+
 			</div>
 		</nav>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+					<i class="hamburger align-self-center"></i>
+				</a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
@@ -189,7 +189,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
 								<div class="dropdown-menu-header">
 									<div class="position-relative">
-										4 New Messages
+										New Messages
 									</div>
 								</div>
 								<div class="list-group">
@@ -205,58 +205,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											</div>
 										</div>
 									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="William Harris">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">William Harris</div>
-												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="Christina Mason">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Christina Mason</div>
-												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
-												<div class="text-muted small mt-1">4h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Sharon Lessman</div>
-												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
+
 								</div>
 								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all messages</a>
+									<a href="messages.php" class="text-muted">Show all messages</a>
 								</div>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="../img/user.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
-              </a>
+								<img src="../img/user.png" class="avatar img-fluid rounded me-1" alt="USER" /> <span class="text-dark">USER</span>
+							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								
+
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="index.php"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
@@ -268,154 +233,67 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					</ul>
 				</div>
 			</nav>
+			<?php
+			// Assuming you have a database connection established and your Book table is named 'Book'
+			// Include connection
+			require_once "./config.php";
 
-					<main class="content">
+			// Check if the delete button is clicked
+			if (isset($_POST['delete'])) {
+				// Get the bookId from the form data
+				$bookId = $_POST['bookId'];
+
+				// Prepare and execute the SQL query to delete the book from the Book table
+				$stmt = $conn->prepare("DELETE FROM Book WHERE bookId = ?");
+				$stmt->bind_param("i", $bookId);
+
+				if ($stmt->execute()) {
+					// Book deleted successfully, reload the page to see the updated list
+					echo "<script>" . "window.location.href='./manage-book.php';" . "</script>";
+					exit();
+				} else {
+					// Handle the error (you can redirect to an error page or display an error message)
+					echo "Error: Unable to delete book.";
+				}
+
+				// Close the prepared statement
+				$stmt->close();
+			}
+
+			// Prepare and execute the SQL query to fetch the 6 latest books
+			$stmt = $conn->prepare("SELECT * FROM Book ORDER BY bookId DESC LIMIT 6");
+			$stmt->execute();
+			$result = $stmt->get_result();
+			$latest_books = $result->fetch_all(MYSQLI_ASSOC);
+			$stmt->close();
+
+			// Close the database connection
+			$conn->close();
+			?>
+
+			<main class="content">
 				<div class="container-fluid p-0">
-
 					<h1 class="h3 mb-3"><strong>Books</strong></h1>
-
-
 					<div class="row">
-						<div class="col-6 col-md-4">
-							<div class="card">
-								<img class="card-img-top" src="../img/photos/unsplash-1.jpg" alt="Unsplash">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Card with image and links</h5>
-								</div>
-								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="btn btn-danger">DELETE</a>
+						<?php foreach ($latest_books as $book) : ?>
+							<div class="col-6 col-md-4">
+								<div class="card">
+									<img class="card-img-top" src="../img/photos/unsplash-1.jpg" alt="Cover Page">
+									<div class="card-header">
+										<h5 class="card-title mb-0"><?php echo $book['title']; ?></h5>
+									</div>
+									<div class="card-body">
+										<p class="card-text"><?php echo $book['description']; ?></p>
+										<form method="post">
+											<input type="hidden" name="bookId" value="<?php echo $book['bookId']; ?>">
+											<button type="submit" name="delete" class="btn btn-danger">DELETE</button>
+										</form>
+									</div>
 								</div>
 							</div>
-						</div>
+						<?php endforeach; ?>
 
-						<div class="col-6 col-md-4">
-							<div class="card">
-								<img class="card-img-top" src="../img/photos/unsplash-2.jpg" alt="Unsplash">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Card with image and button</h5>
-								</div>
-								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="btn btn-danger">DELETE</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-6 col-md-4">
-							<div class="card">
-								<img class="card-img-top" src="../img/photos/unsplash-2.jpg" alt="Unsplash">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Card with image and button</h5>
-								</div>
-								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="btn btn-danger">DELETE</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-6 col-md-4">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Card with links</h5>
-								</div>
-								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="btn btn-danger">DELETE</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-6 col-md-4">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Card with button</h5>
-								</div>
-								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="btn btn-danger">DELETE</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-6 col-md-4">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Card with button</h5>
-								</div>
-								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" class="btn btn-danger">DELETE</a>
-								</div>
-							</div>
-						</div>
 					</div>
-
-					
-					<div class="row">
-						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
-							<div class="card flex-fill">
-								<div class="card-header">
-
-									<h5 class="card-title mb-0">Latest Projects</h5>
-								</div>
-								<table class="table table-hover my-0">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th class="d-none d-xl-table-cell">Start Date</th>
-											<th class="d-none d-xl-table-cell">End Date</th>
-											<th>Status</th>
-											<th class="d-none d-md-table-cell">Assignee</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Project Apollo</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-										</tr>
-										<tr>
-											<td>Project Fireball</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-danger">Cancelled</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-										</tr>
-										<tr>
-											<td>Project Hades</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Sharon Lessman</td>
-										</tr>
-										<tr>
-											<td>Project Nitro</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-warning">In progress</span></td>
-											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-										</tr>
-										<tr>
-											<td>Project Phoenix</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-										</tr>
-										
-
-									</tbody>
-								</table>
-							</div>
-						</div>
-
-
-
-						
-					</div>
-
 				</div>
 			</main>
 
@@ -424,7 +302,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="#" target="_blank"><strong>Admin</strong></a> - <a class="text-muted" href="" target="_blank"><strong>Current Awareness System</strong></a>								&copy;
+								<a class="text-muted" href="#" target="_blank"><strong>Admin</strong></a> - <a class="text-muted" href="" target="_blank"><strong>Current Awareness System</strong></a> &copy;
 							</p>
 						</div>
 					</div>

@@ -233,129 +233,74 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					</ul>
 				</div>
 			</nav>
-
 			<?php
-			# Include connection
+			// Include connection
 			require_once "./config.php";
 
-			ini_set('display_errors', 1);
-			error_reporting(E_ALL);
+			// Check if the bookId is provided in the query parameter
+			if (isset($_GET['id'])) {
+				$bookId = $_GET['id'];
 
+				// Check if the delete button is clicked
+				if (isset($_POST['delete'])) {
+					// Prepare and execute the SQL query to delete the book from the Book table
+					$stmt = $conn->prepare("DELETE FROM Book WHERE bookId = ?");
+					$stmt->bind_param("i", $bookId);
 
+					if ($stmt->execute()) {
+						// Book deleted successfully, redirect to the homepage or any other page
+						echo "<script>" . "window.location.href='./'" . "</script>";
+						exit();
+					} else {
+						// Handle the error (you can redirect to an error page or display an error message)
+						echo "Error: Unable to delete book.";
+					}
 
-			# Get the count of messages for today
-			$today = date('Y-m-d');
-			$queryToday = "SELECT COUNT(*) AS today_count FROM Contact WHERE DATE(timestamp) = '$today'";
-			$resultToday = $conn->query($queryToday);
-			$rowToday = $resultToday->fetch_assoc();
-			$todayCount = $rowToday['today_count'];
+					// Close the prepared statement
+					$stmt->close();
+				}
 
-			# Get the count of total messages
-			$queryTotal = "SELECT COUNT(*) AS total_count FROM Contact";
-			$resultTotal = $conn->query($queryTotal);
-			$rowTotal = $resultTotal->fetch_assoc();
-			$totalCount = $rowTotal['total_count'];
+				// Fetch book details from the database based on the provided bookId
+				$stmt = $conn->prepare("SELECT * FROM Book WHERE bookId = ?");
+				$stmt->bind_param("i", $bookId);
+				$stmt->execute();
+				$result = $stmt->get_result();
+				$book = $result->fetch_assoc();
+				$stmt->close();
+			}
 
-			# Get the list of messages
-			$queryMessages = "SELECT * FROM Contact";
-			$resultMessages = $conn->query($queryMessages);
+			// Close the database connection
+			$conn->close();
 			?>
-
-			<!-- Your HTML content here -->
+			<h1 class="h3 m-5"><strong><?php echo $book['title']; ?></strong></h1>
 			<main class="content">
-				<div class="container-fluid p-0">
-					<!-- ... Your existing code ... -->
-					<div class="row">
-						<div class="col-xl-8 col-xxl-8">
-							<div class="w-100">
-								<div class="row">
-									<div class="col-sm-6">
+				<!-- Display book details -->
+				<?php if (isset($book)) : ?>
+					<div class=" p-0 d-flex align-items-center justify-content-center">
+						<div class="row">
+							<div class="">
 
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Today</h5>
-													</div>
-
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="message-square"></i>
-
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3"><?= $todayCount ?> New Messages</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i><?= $todayCount ?></span>
-													<span class="text-muted">For today</span>
-												</div>
-											</div>
-										</div>
-
-
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">All</h5>
-													</div>
-
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="message-square"></i>
-
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3"><?= $totalCount ?> Messages</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i><?= $totalCount ?></h1> </span>
-													<span class="text-muted">Since last week</span>
-												</div>
-											</div>
-										</div>
-									</div>
+								<div class="embed-responsive embed-responsive-16by9">
+									<?php echo $book['audioBookUrl']; ?>
 								</div>
+
+
+								<p class="card-text"><?php echo $book['description']; ?></p>
+								<form method="post">
+									<input type="hidden" name="delete" value="1">
+									<button type="submit" class="btn btn-danger mt-3">DELETE</button>
+								</form>
+
+
 							</div>
 						</div>
 					</div>
-					<!-- ... Your existing code ... -->
-					<div class="row">
-						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
-							<div class="card flex-fill">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Latest Messages</h5>
-								</div>
-								<table class="table table-hover my-0">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th class="d-none d-xl-table-cell">Email</th>
-											<th class="d-none d-xl-table-cell">Phone</th>
-
-											<th class="d-none d-md-table-cell">Message</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php while ($row = $resultMessages->fetch_assoc()) : ?>
-											<tr>
-												<td><?= $row['name'] ?></td>
-												<td class="d-none d-xl-table-cell"><?= $row['emailAddress'] ?></td>
-												<td class="d-none d-xl-table-cell"><?= $row['phoneNumber'] ?></td>
-
-												<td class="d-none d-md-table-cell"><?= $row['message'] ?></td>
-											</tr>
-										<?php endwhile; ?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<!-- ... Your existing code ... -->
-				</div>
+				<?php else : ?>
+					<p>No book found with the given ID.</p>
+				<?php endif; ?>
 			</main>
-			<!-- ... Your existing code ... -->
+
+
 
 
 			<footer class="footer">

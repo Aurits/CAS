@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_insert_sql = "INSERT INTO User (username, email, password, reg_date) VALUES (?, ?, ?, NOW())";
     # Prepare an insert statement for the LibraryStaff table
     $libstaff_insert_sql = "INSERT INTO LibraryStaff (firstName, lastName, emailAddress, contactNumber) VALUES (?, ?, ?, ?)";
-if (($user_stmt = mysqli_prepare($conn, $user_insert_sql)) && ($libstaff_stmt = mysqli_prepare($conn, $libstaff_insert_sql))) {
+    if (($user_stmt = mysqli_prepare($conn, $user_insert_sql)) && ($libstaff_stmt = mysqli_prepare($conn, $libstaff_insert_sql))) {
 
       # Begin the transaction
       mysqli_begin_transaction($conn);
@@ -192,7 +192,7 @@ if (($user_stmt = mysqli_prepare($conn, $user_insert_sql)) && ($libstaff_stmt = 
   <meta name="author" content="">
   <meta name="keywords" content="">
 
-  <title>Sign In | Current Awareness System</title>
+  <title>Sign Up | Current Awareness System</title>
 
   <link href="../css/app.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -206,9 +206,9 @@ if (($user_stmt = mysqli_prepare($conn, $user_insert_sql)) && ($libstaff_stmt = 
           <div class="d-table-cell align-middle">
 
             <div class="text-center mt-4">
-              <h1 class="h2">Get started</h1>
+              <h1 class="h2">Current Awareness System</h1>
               <p class="lead">
-                Start creating the best possible user experience for your customers.
+                Sign up now
               </p>
             </div>
 

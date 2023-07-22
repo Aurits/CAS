@@ -4,8 +4,8 @@ session_start();
 
 # If user is not logged in then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-  echo "<script>" . "window.location.href='./pages-sign-in.php';" . "</script>";
-  exit;
+	echo "<script>" . "window.location.href='./pages-sign-in.php';" . "</script>";
+	exit;
 }
 ?>
 
@@ -19,9 +19,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="keywords" content="">
-
-
-
 	<title>Current Awareness System</title>
 
 	<link href="../css/app.css" rel="stylesheet">
@@ -33,8 +30,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="index.php">
-          <span class="align-middle">Admin</span>
-        </a>
+					<span class="align-middle">Admin</span>
+				</a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
@@ -43,26 +40,26 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item active">
 						<a class="sidebar-link" href="index.php">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-sign-in.php">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-            </a>
+							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-sign-up.php">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-            </a>
+							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="logout.php">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Logout</span>
-            </a>
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Logout</span>
+						</a>
 					</li>
 
 					<li class="sidebar-header">
@@ -71,46 +68,46 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="post-book.php">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
-            </a>
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="manage-book.php">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Book</span>
-            </a>
+							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Book</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="messages.php">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">All Messages</span>
-            </a>
+							<i class="align-middle" data-feather="grid"></i> <span class="align-middle">All Messages</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="students.php">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Students</span>
-            </a>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Students</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="staff.php">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Staff</span>
-            </a>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Staff</span>
+						</a>
 					</li>
 
 
 				</ul>
 
-				
+
 			</div>
 		</nav>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+					<i class="hamburger align-self-center"></i>
+				</a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
@@ -188,7 +185,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
 								<div class="dropdown-menu-header">
 									<div class="position-relative">
-										4 New Messages
+										New Messages
 									</div>
 								</div>
 								<div class="list-group">
@@ -204,58 +201,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											</div>
 										</div>
 									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="William Harris">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">William Harris</div>
-												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="Christina Mason">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Christina Mason</div>
-												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
-												<div class="text-muted small mt-1">4h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Sharon Lessman</div>
-												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
+
 								</div>
 								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all messages</a>
+									<a href="messages.php" class="text-muted">Show all messages</a>
 								</div>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="../img/user.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
-              </a>
+								<img src="../img/user.png" class="avatar img-fluid rounded me-1" alt="USER" /> <span class="text-dark">USER</span>
+							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								
+
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="index.php"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
@@ -374,7 +336,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 								<div class="card-body py-3">
 									<div class="chart chart-sm">
 										<canvas id="chartjs-dashboard-bar"></canvas>
-										
+
 									</div>
 								</div>
 							</div>
@@ -462,7 +424,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 
 
-						
+
 					</div>
 
 				</div>
@@ -473,7 +435,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="#" target="_blank"><strong>Admin</strong></a> - <a class="text-muted" href="" target="_blank"><strong>Current Awareness System</strong></a>								&copy;
+								<a class="text-muted" href="#" target="_blank"><strong>Admin</strong></a> - <a class="text-muted" href="" target="_blank"><strong>Current Awareness System</strong></a> &copy;
 							</p>
 						</div>
 					</div>

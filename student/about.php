@@ -60,7 +60,7 @@
                     <li>
                         <a href="./register.php">Register</a>
                     </li>
-                  
+
                     <li>
                         <a href="./contact.php">Contact</a>
                     </li>
@@ -78,9 +78,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="page-heading">
-                        <h1>About Me</h1>
+                        <h1>About</h1>
                         <hr class="small">
-                        <span class="subheading">This is what I do.</span>
+
                     </div>
                 </div>
             </div>
@@ -90,11 +90,28 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</p>
-            </div>
+            <main class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                            <h1 class="h3 mb-4"><strong>About Our Current Awareness System</strong></h1>
+                            <p class="lead">Our current awareness system is specifically designed to cater to the needs of visually impaired students. We understand the challenges they face in accessing information and staying updated, and our system aims to bridge this gap.</p>
+
+                            <h2>Features of Our Awareness System:</h2>
+                            <ul class="list-unstyled text-left">
+                                <li><strong>Text-to-Speech Technology:</strong> All textual content on our platform can be converted to speech, allowing visually impaired students to listen to the information in an accessible format.</li>
+                                <li><strong>Screen Reader Compatibility:</strong> Our platform is fully compatible with popular screen readers, ensuring that visually impaired students can navigate through the content effortlessly.</li>
+                                <li><strong>Accessible User Interface:</strong> We have implemented an accessible and user-friendly interface with clear headings and keyboard navigability for an optimal user experience.</li>
+                                <li><strong>High Contrast and Font Size Options:</strong> Students can customize the contrast and font size to suit their visual preferences, ensuring comfortable reading.</li>
+                                <li><strong>Audio Descriptions for Media:</strong> Videos and images on our platform come with audio descriptions to provide context and details to visually impaired users.</li>
+                            </ul>
+
+                            <p>At our organization, we are dedicated to making education accessible to all students. Our awareness system for visually impaired students is a step towards fostering an inclusive learning environment, empowering every student to achieve their academic goals.</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
         </div>
     </div>
 
@@ -108,7 +125,7 @@
                     <ul class="list-inline text-center">
                         <img src="../img/logo.png" width="120px" height="100px" alt="school logo">
                     </ul>
-                   
+
                 </div>
             </div>
         </div>

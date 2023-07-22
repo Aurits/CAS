@@ -4,8 +4,8 @@ session_start();
 
 # If user is not logged in then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-  echo "<script>" . "window.location.href='./pages-sign-in.php';" . "</script>";
-  exit;
+	echo "<script>" . "window.location.href='./pages-sign-in.php';" . "</script>";
+	exit;
 }
 ?>
 
@@ -34,8 +34,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="index.php">
-          <span class="align-middle">Admin</span>
-        </a>
+					<span class="align-middle">Admin</span>
+				</a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
@@ -44,26 +44,26 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item active">
 						<a class="sidebar-link" href="index.php">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-sign-in.php">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-            </a>
+							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="pages-sign-up.php">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-            </a>
+							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="logout.php">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Logout</span>
-            </a>
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Logout</span>
+						</a>
 					</li>
 
 					<li class="sidebar-header">
@@ -72,46 +72,46 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="post-book.php">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
-            </a>
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="manage-book.php">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Book</span>
-            </a>
+							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Book</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="messages.php">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">All Messages</span>
-            </a>
+							<i class="align-middle" data-feather="grid"></i> <span class="align-middle">All Messages</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="students.php">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Students</span>
-            </a>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Students</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="staff.php">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Staff</span>
-            </a>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Staff</span>
+						</a>
 					</li>
 
 
 				</ul>
 
-				
+
 			</div>
 		</nav>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+					<i class="hamburger align-self-center"></i>
+				</a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
@@ -189,22 +189,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
 								<div class="dropdown-menu-header">
 									<div class="position-relative">
-										4 New Messages
+										New Messages
 									</div>
 								</div>
 								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Vanessa Tucker</div>
-												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
-												<div class="text-muted small mt-1">15m ago</div>
-											</div>
-										</div>
-									</a>
+
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
@@ -217,46 +206,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											</div>
 										</div>
 									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="Christina Mason">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Christina Mason</div>
-												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
-												<div class="text-muted small mt-1">4h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Sharon Lessman</div>
-												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
+
 								</div>
 								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all messages</a>
+									<a href="messages.php" class="text-muted">Show all messages</a>
 								</div>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="../img/user.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
-              </a>
+								<img src="../img/user.png" class="avatar img-fluid rounded me-1" alt="USER" /> <span class="text-dark">USER</span>
+							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								
+
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="index.php"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
@@ -275,176 +241,158 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+					<h1 class="h3 mb-3"><strong>Admin</strong> Dashboard</h1>
+
+
+
+
+					<?php
+					// Check if the form is submitted
+					if ($_SERVER["REQUEST_METHOD"] == "POST") {
+						// Get form data
+						$title = $_POST["title"];
+						$author = $_POST["author"];
+						$description = $_POST["description"];
+						$audioBookUrl = $_POST["audioBookUrl"];
+						$staffId = $_POST["staffId"];
+
+						// Include connection
+						require_once "./config.php";
+
+						ini_set('display_errors', 1);
+						error_reporting(E_ALL);
+
+						// Prepare and execute the SQL query to insert data into the Book table
+						$stmt = $conn->prepare("INSERT INTO Book (title, author, description, audioBookUrl, staffId) VALUES (?, ?, ?, ?, ?)");
+						$stmt->bind_param("ssssi", $title, $author, $description, $audioBookUrl, $staffId);
+
+						if ($stmt->execute()) {
+							echo "Book details saved successfully!";
+						} else {
+							echo "Error: " . $stmt->error;
+						}
+
+						// Close the prepared statement and connection
+						$stmt->close();
+					}
+					?>
 
 
 
 
 
-                    <div class="container-fluid">
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Book Details</h4>
-                                        
+					<div class="container-fluid">
 
-                                        <div class="row align-items-center justify-content-center d-flex">
-                                            <div class="col-lg-8">
-                                                <form>
-
-                                                    <div class="mb-3">
-                                                        <label for="simpleinput" class="form-label">Text</label>
-                                                        <input type="text" id="simpleinput" class="form-control">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="example-email" class="form-label">Email</label>
-                                                        <input type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="example-password" class="form-label">Password</label>
-                                                        <input type="password" id="example-password" class="form-control" value="password">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="password" class="form-label">Show/Hide Password</label>
-                                                        <div class="input-group input-group-merge">
-                                                            <input type="password" id="password" class="form-control" placeholder="Enter your password">
-                                                            <div class="input-group-text" data-password="false">
-                                                                <span class="password-eye"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-        
-                                                    <div class="mb-3">
-                                                        <label for="example-palaceholder" class="form-label">Placeholder</label>
-                                                        <input type="text" id="example-palaceholder" class="form-control" placeholder="placeholder">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="example-textarea" class="form-label">Text area</label>
-                                                        <textarea class="form-control" id="example-textarea" rows="5"></textarea>
-                                                    </div>
-    
-                                                    <div class="mb-3">
-                                                        <label for="example-select" class="form-label">Input Select</label>
-                                                        <select class="form-select" id="example-select">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                        </select>
-                                                    </div>
-        
-                                                    <div class="mb-3">
-                                                        <label for="example-date" class="form-label">Date</label>
-                                                        <input class="form-control" id="example-date" type="date" name="date">
-                                                    </div>
-        
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <!-- end row-->
-
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card -->
-                            </div><!-- end col -->
-                        </div>
-                        <!-- end row -->                 
-
-                    </div> 
+						<div class="row">
+							<div class="col-12">
+								<div class="card">
+									<div class="card-body">
+										<h4 class="header-title">Book Details</h4>
 
 
-			
-				
+										<div class="row align-items-center justify-content-center d-flex">
+											<div class="col-lg-8">
+												<form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
+
+													<div class="mb-3">
+														<label for="title" class="form-label">Book Title</label>
+														<input type="text" id="title" name="title" class="form-control" required>
+													</div>
+
+													<div class="mb-3">
+														<label for="author" class="form-label">Author</label>
+														<input type="text" id="author" name="author" class="form-control" required>
+													</div>
+
+													<div class="mb-3">
+														<label for="description" class="form-label">Description</label>
+														<textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+													</div>
+
+													<div class="mb-3">
+														<label for="audioBookUrl" class="form-label">Audio Book URL</label>
+														<input type="text" id="audioBookUrl" name="audioBookUrl" class="form-control">
+													</div>
+
+													<div class="mb-3">
+														<label for="staffId" class="form-label">Staff ID</label>
+														<input type="number" id="staffId" name="staffId" class="form-control" required>
+													</div>
+
+													<button type="submit" class="btn btn-primary">Save Book</button>
+												</form>
+											</div>
+										</div>
+										<!-- end row -->
+
+									</div> <!-- end card-body -->
+								</div> <!-- end card -->
+							</div><!-- end col -->
+						</div>
+						<!-- end row -->
+
+					</div>
+
+
+
 
 					<div class="row">
 						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-
-									<h5 class="card-title mb-0">Latest Projects</h5>
+									<h5 class="card-title mb-0">Latest Books</h5>
 								</div>
 								<table class="table table-hover my-0">
 									<thead>
 										<tr>
-											<th>Name</th>
-											<th class="d-none d-xl-table-cell">Start Date</th>
-											<th class="d-none d-xl-table-cell">End Date</th>
-											<th>Status</th>
-											<th class="d-none d-md-table-cell">Assignee</th>
+											<th>Title</th>
+											<th class="d-none d-xl-table-cell">Author</th>
+											<th class="d-none d-xl-table-cell">Description</th>
+											<!-- <th class="d-none d-md-table-cell">URL</th> -->
+											<th class="d-none d-md-table-cell">StaffID</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Project Apollo</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-										</tr>
-										<tr>
-											<td>Project Fireball</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-danger">Cancelled</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-										</tr>
-										<tr>
-											<td>Project Hades</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Sharon Lessman</td>
-										</tr>
-										<tr>
-											<td>Project Nitro</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-warning">In progress</span></td>
-											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
-										</tr>
-										<tr>
-											<td>Project Phoenix</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-										</tr>
-										<tr>
-											<td>Project X</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Sharon Lessman</td>
-										</tr>
-										<tr>
-											<td>Project Romeo</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Christina Mason</td>
-										</tr>
-										<tr>
-											<td>Project Wombat</td>
-											<td class="d-none d-xl-table-cell">01/01/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-warning">In progress</span></td>
-											<td class="d-none d-md-table-cell">William Harris</td>
-										</tr>
+										<?php
+										// Assuming you have a database connection established
+										// Include connection
+										require_once "./config.php";
+
+										// Prepare and execute the SQL query to select data from the Book table
+										$sql = "SELECT * FROM Book";
+										$result = $conn->query($sql);
+
+										// Check if the query was successful
+										if ($result) {
+											// Loop through the data and display each row in the table
+											while ($row = $result->fetch_assoc()) {
+												echo '<tr>';
+												echo '<td>' . $row['title'] . '</td>';
+												echo '<td class="d-none d-xl-table-cell">' . $row['author'] . '</td>';
+												echo '<td class="d-none d-xl-table-cell">' . $row['description'] . '</td>';
+												// echo '<td class="d-none d-md-table-cell">' . $row['audioBookUrl'] . '</td>';
+												echo '<td class="d-none d-md-table-cell">' . $row['staffId'] . '</td>';
+												echo '<td><a href="view-book.php?id=' . $row['bookId'] . '" class="badge bg-danger">Manage</a></td>';
+												echo '</tr>';
+											}
+
+											// Free the result set
+											$result->free();
+										} else {
+											echo '<tr><td colspan="6">Error: ' . $conn->error . '</td></tr>';
+										}
+
+										// Close the database connection
+										$conn->close();
+										?>
 									</tbody>
 								</table>
 							</div>
 						</div>
-
-
-
-						
 					</div>
+
 
 				</div>
 			</main>
@@ -454,7 +402,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="#" target="_blank"><strong>Admin</strong></a> - <a class="text-muted" href="" target="_blank"><strong>Current Awareness System</strong></a>								&copy;
+								<a class="text-muted" href="#" target="_blank"><strong>Admin</strong></a> - <a class="text-muted" href="" target="_blank"><strong>Current Awareness System</strong></a> &copy;
 							</p>
 						</div>
 					</div>

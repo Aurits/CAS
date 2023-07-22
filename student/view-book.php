@@ -1,42 +1,3 @@
-<?php
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["lastName"];
-    $emailAddress = $_POST["emailAddress"];
-    $contactNumber = $_POST["contactNumber"];
-
-    // Include connection
-    require_once "./config.php";
-
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
-
-    // Prepare and execute the SQL query to insert data into the VisuallyImpairedStudent table
-    $stmt = $conn->prepare("INSERT INTO VisuallyImpairedStudent (firstName, lastName, emailAddress, contactNumber) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $firstName, $lastName, $emailAddress, $contactNumber);
-
-    if ($stmt->execute()) {
-        echo "Student registered successfully!";
-        // Play success audio
-        echo '<audio autoplay><source src="success_audio.mp3" type="audio/mpeg"></audio>';
-    } else {
-        echo "Error: " . $stmt->error;
-        // Play error audio
-        echo '<audio autoplay><source src="error_audio.mp3" type="audio/mpeg"></audio>';
-    }
-
-    // Close the prepared statement and connection
-    $stmt->close();
-    $conn->close();
-}
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,7 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li>
                         <a href="./register.php">Register</a>
                     </li>
-
                     <li>
                         <a href="./contact.php">Contact</a>
                     </li>
@@ -109,59 +69,103 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- /.container -->
     </nav>
 
+    <?php
+    // Include connection
+    require_once "./config.php";
 
-    <header class="intro-header" style="background-image: url('../img/about-bg.jpg')">
+    // Check if the bookId is provided in the query parameter
+    if (isset($_GET['id'])) {
+        $bookId = $_GET['id'];
+
+        // Check if the delete button is clicked
+        if (isset($_POST['delete'])) {
+            // Prepare and execute the SQL query to delete the book from the Book table
+            $stmt = $conn->prepare("DELETE FROM Book WHERE bookId = ?");
+            $stmt->bind_param("i", $bookId);
+
+            if ($stmt->execute()) {
+                // Book deleted successfully, redirect to the homepage or any other page
+                echo "<script>" . "window.location.href='./'" . "</script>";
+                exit();
+            } else {
+                // Handle the error (you can redirect to an error page or display an error message)
+                echo "Error: Unable to delete book.";
+            }
+
+            // Close the prepared statement
+            $stmt->close();
+        }
+
+        // Fetch book details from the database based on the provided bookId
+        $stmt = $conn->prepare("SELECT * FROM Book WHERE bookId = ?");
+        $stmt->bind_param("i", $bookId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $book = $result->fetch_assoc();
+        $stmt->close();
+    }
+
+    // Close the database connection
+    $conn->close();
+    ?>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-color: grey; height:25vh">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="page-heading">
-                        <h1>Register Me</h1>
-                        <hr class="small">
-                        <span class="subheading"></span>
+                    <div>
+
+                        <h1 class="heading mt-5"><?php echo $book['title']; ?></h1>
+                        <span class="meta">Posted by <a href="../">Main Library</a></span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Register Visually Impaired Students</h1>
 
-                <!-- Registration Form -->
-                <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                    <div class="form-group">
-                        <label for="firstName">First Name:</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name:</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="emailAddress">Email Address:</label>
-                        <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactNumber">Contact Number:</label>
-                        <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
-                    </div>
-                    <input type="submit" class="btn btn-primary">
-                </form>
+                    <h1 class="h3 m-5">media</h1>
+                    <main class="content">
+                        <!-- Display book details -->
+                        <?php if (isset($book)) : ?>
+                            <div class=" p-0 d-flex align-items-center justify-content-center">
+                                <div class="row">
+                                    <div class="">
+
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <?php echo $book['audioBookUrl']; ?>
+                                        </div>
+
+
+                                        <p class="card-text"><?php echo $book['description']; ?></p>
+                                        <a href="../index.php">Go back</a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        <?php else : ?>
+                            <p>No book found with the given ID.</p>
+                        <?php endif; ?>
+                    </main>
+
+
+
+                </div>
             </div>
         </div>
-
-
-    </div>
-
-
+    </article>
 
     <hr>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -181,6 +185,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../js/clean-blog.min.js"></script>
 
 </body>
 
