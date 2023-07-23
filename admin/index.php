@@ -242,19 +242,19 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 			$totalStudents = $result1->fetch_assoc()['total_students'];
 
 						// Get the total number of students
-			$stmt = $conn->prepare("SELECT COUNT(*) AS total_students FROM Book");
+			$stmt = $conn->prepare("SELECT COUNT(*) AS books FROM Book");
 			$stmt->execute();
 			$result2 = $stmt->get_result();
 			$books = $result2->fetch_assoc()['books'];
 
 						// Get the total number of students
-			$stmt = $conn->prepare("SELECT COUNT(*) AS total_students FROM Contact");
+			$stmt = $conn->prepare("SELECT COUNT(*) AS contacts FROM Contact");
 			$stmt->execute();
 			$result3 = $stmt->get_result();
 			$contacts = $result3->fetch_assoc()['contacts'];
 
 						// Get the total number of students
-			$stmt = $conn->prepare("SELECT COUNT(*) AS total_students FROM LibraryStaff");
+			$stmt = $conn->prepare("SELECT COUNT(*) AS staff FROM LibraryStaff");
 			$stmt->execute();
 			$result4 = $stmt->get_result();
 			$staff = $result4->fetch_assoc()['staff'];
