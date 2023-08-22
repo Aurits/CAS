@@ -68,7 +68,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="post-book.php">
-							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Make Post</span>
 						</a>
 					</li>
 
@@ -241,19 +241,19 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 			$result1 = $stmt->get_result();
 			$totalStudents = $result1->fetch_assoc()['total_students'];
 
-						// Get the total number of students
+			// Get the total number of students
 			$stmt = $conn->prepare("SELECT COUNT(*) AS books FROM Book");
 			$stmt->execute();
 			$result2 = $stmt->get_result();
 			$books = $result2->fetch_assoc()['books'];
 
-						// Get the total number of students
+			// Get the total number of students
 			$stmt = $conn->prepare("SELECT COUNT(*) AS contacts FROM Contact");
 			$stmt->execute();
 			$result3 = $stmt->get_result();
 			$contacts = $result3->fetch_assoc()['contacts'];
 
-						// Get the total number of students
+			// Get the total number of students
 			$stmt = $conn->prepare("SELECT COUNT(*) AS staff FROM LibraryStaff");
 			$stmt->execute();
 			$result4 = $stmt->get_result();
@@ -286,7 +286,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 												</div>
 												<h1 class="mt-1 mb-3"><?= $books ?></h1>
 												<div class="mb-0">
-													
+
 													<span class="text-muted">Since last week</span>
 												</div>
 											</div>
@@ -306,7 +306,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 												</div>
 												<h1 class="mt-1 mb-3"><?= $totalStudents ?></h1>
 												<div class="mb-0">
-													
+
 													<span class="text-muted">Since last week</span>
 												</div>
 											</div>
@@ -328,7 +328,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 												</div>
 												<h1 class="mt-1 mb-3"><?= $staff ?></h1>
 												<div class="mb-0">
-													
+
 													<span class="text-muted">Since last week</span>
 												</div>
 											</div>
@@ -348,7 +348,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 												</div>
 												<h1 class="mt-1 mb-3"><?= $contacts ?></h1>
 												<div class="mb-0">
-													
+
 													<span class="text-muted">Since last week</span>
 												</div>
 											</div>
@@ -359,22 +359,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 						</div>
 
 						<div class="col-xl-6 col-xxl-7">
-							<div class="card flex-fill w-100">
-								<div class="card-header">
 
-									<h5 class="card-title mb-0">Trends</h5>
-								</div>
-								<div class="card-body py-3">
-									<div class="chart chart-sm">
-										<canvas id="chartjs-dashboard-bar"></canvas>
 
-									</div>
-								</div>
-							</div>
+
 						</div>
 					</div>
 
-					<div class="row" >
+					<div class="row">
 						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
@@ -408,7 +399,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 												echo '<tr>';
 												echo '<td>' . $row['title'] . '</td>';
 												echo '<td class="">' . $row['author'] . '</td>';
-												echo '<td class="d-none d-xl-table-cell">' . $row['description'] . '</td>';
+												echo '<td class="d-none d-xl-table-cell">' . (strlen($row['description']) > 100 ? substr($row['description'], 0, 100) . '...' : $row['description']) . '</td>';
+
 												// echo '<td class="d-none d-md-table-cell">' . $row['audioBookUrl'] . '</td>';
 												echo '<td class="">' . $row['staffId'] . '</td>';
 												echo '<td><a href="view-book.php?id=' . $row['bookId'] . '" class="badge bg-danger">Manage</a></td>';
@@ -428,7 +420,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 								</table>
 							</div>
 						</div>
-			
+
 
 
 					</div>

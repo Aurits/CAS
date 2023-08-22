@@ -72,7 +72,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="post-book.php">
-							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Make Post</span>
 						</a>
 					</li>
 
@@ -277,19 +277,19 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					<div class="row">
 						<?php foreach ($latest_books as $book) : ?>
 							<div class="col-6 col-sm-12 col-md-4">
-								
-									<img class="card-img-top" src="../img/photos/unsplash-1.jpg" alt="Cover Page">
-									<div class="card-header">
-										<h5 class="card-title mb-0"><?php echo $book['title']; ?></h5>
-									</div>
-									<div class="card-body">
-										<p class="card-text"><?php echo $book['description']; ?></p>
-										<form method="post">
-											<input type="hidden" name="bookId" value="<?php echo $book['bookId']; ?>">
-											<button type="submit" name="delete" class="btn btn-danger">DELETE</button>
-										</form>
-									</div>
-								
+
+								<img class="card-img-top" src="../img/photos/unsplash-1.jpg" alt="Cover Page">
+								<div class="card-header">
+									<h5 class="card-title mb-0"><?php echo $book['title']; ?></h5>
+								</div>
+								<div class="card-body">
+									<p class="card-text"><?php echo $book['description']; ?></p>
+									<form method="post">
+										<input type="hidden" name="bookId" value="<?php echo $book['bookId']; ?>">
+										<button type="submit" name="delete" class="btn btn-danger">DELETE</button>
+									</form>
+								</div>
+
 							</div>
 						<?php endforeach; ?>
 

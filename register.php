@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastName = $_POST["lastName"];
     $emailAddress = $_POST["emailAddress"];
     $contactNumber = $_POST["contactNumber"];
+    $college = $_POST["college"];
 
     // Include connection
     require_once "./config.php";
@@ -16,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Prepare and execute the SQL query to insert data into the VisuallyImpairedStudent table
-    $stmt = $conn->prepare("INSERT INTO VisuallyImpairedStudent (firstName, lastName, emailAddress, contactNumber) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $firstName, $lastName, $emailAddress, $contactNumber);
+    $stmt = $conn->prepare("INSERT INTO VisuallyImpairedStudent (firstName, lastName, emailAddress, contactNumber, College) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $contactNumber, $college);
 
     if ($stmt->execute()) {
         echo "Student registered successfully!";
@@ -76,6 +77,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
+                    <li>
+                        <a href="admin/">Admin Login</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -93,9 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h3 tabindex="0">Register Visually Impaired Students</h3>
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="col-lg-8">
+                    <h3 tabindex="0" class="text-center">Register Visually Impaired Students</h3>
 
                     <!-- Registration Form -->
                     <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -114,6 +118,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-group">
                             <label for="contactNumber">Contact Number:</label>
                             <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="college">College:</label>
+                            <select class="form-control" id="college" name="college" required>
+                                <option value="" disabled selected>Select a College</option>
+                                <option value="CAES">College of Agricultural and Environmental Sciences</option>
+                                <option value="CoBAMS">College of Business and Management Sciences</option>
+                                <option value="CoCIS">College of Computing and Information Sciences</option>
+                                <option value="CEES">College of Education and External Studies</option>
+                                <option value="CEDAT">College of Engineering, Design, Art and Technology</option>
+                                <option value="CHS">College of Health Sciences</option>
+                                <option value="CHUSS">College of Humanities and Social Sciences</option>
+                                <option value="CoNAS">College of Natural Sciences</option>
+                                <option value="CoVAB">College of Veterinary Medicine, Animal Resources and Biosecurity</option>
+                            </select>
                         </div>
                         <input type="submit" name="submit" class="btn btn-primary" aria-label="Submit Form">
 

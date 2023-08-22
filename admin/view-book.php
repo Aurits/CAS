@@ -72,7 +72,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="post-book.php">
-							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Make Post</span>
 						</a>
 					</li>
 

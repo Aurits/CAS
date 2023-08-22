@@ -10,6 +10,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,9 +22,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="keywords" content="">
-
-
-
 	<title>Current Awareness System</title>
 
 	<link href="../css/app.css" rel="stylesheet">
@@ -205,6 +204,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											</div>
 										</div>
 									</a>
+
 								</div>
 								<div class="dropdown-menu-footer">
 									<a href="messages.php" class="text-muted">Show all messages</a>
@@ -234,53 +234,54 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 			</nav>
 
 			<?php
-			# Include connection
 			require_once "./config.php";
 
-			ini_set('display_errors', 1);
-			error_reporting(E_ALL);
+			// Get the selected college from the query string
+			$selectedCollege = $_GET['college'];
 
-			// Fetch data from the LibraryStaff table
-			$sql = "SELECT * FROM LibraryStaff";
-			$result = $conn->query($sql);
-
-
-			// Fetch the total number of staff from the LibraryStaff table
-			$sqlTotalStaff = "SELECT COUNT(*) AS totalStaff FROM LibraryStaff";
-			$resultTotalStaff = $conn->query($sqlTotalStaff);
-			$rowTotalStaff = $resultTotalStaff->fetch_assoc();
-			$totalStaff = $rowTotalStaff['totalStaff'];
+			// Get all student details for the selected college
+			$stmt = $conn->prepare("SELECT firstName, lastName, emailAddress, contactNumber, College FROM VisuallyImpairedStudent WHERE College = ?");
+			$stmt->bind_param("s", $selectedCollege);
+			$stmt->execute();
+			$result = $stmt->get_result();
 			?>
 
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3"><strong>Staff</strong></h1>
+					<h1 class="h3 mb-3"><strong>Students</strong></h1>
 
 					<div class="row">
 						<div class="col-xl-8 col-xxl-8">
 							<div class="w-100">
 								<div class="row">
+
+
 									<div class="col-sm-6">
-
-
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Staff</h5>
+														<h5 class="card-title">By College</h5>
 													</div>
 
 													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="users"></i>
-														</div>
+
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3"><?= $totalStaff ?></h1>
-												<div class="mb-0">
-													<span class="text-muted">Total Staff</span>
-												</div>
+												<ul>
+													<li><a href="student_college.php?college=CAES">College of Agricultural and Environmental Sciences</a></li>
+													<li><a href="student_college.php?college=CoBAMS">College of Business and Management Sciences</a></li>
+													<li><a href="student_college.php?college=CoCIS">College of Computing and Information Sciences</a></li>
+													<li><a href="student_college.php?college=CEES">College of Education and External Studies</a></li>
+													<li><a href="student_college.php?college=CEDAT">College of Engineering, Design, Art and Technology</a></li>
+													<li><a href="student_college.php?college=CHS">College of Health Sciences</a></li>
+													<li><a href="student_college.php?college=CHUSS">College of Humanities and Social Sciences</a></li>
+													<li><a href="student_college.php?college=CoNAS">College of Natural Sciences</a></li>
+													<li><a href="student_college.php?college=CoVAB">College of Veterinary Medicine, Animal Resources and Biosecurity</a></li>
+													<!-- Add other college links here -->
+												</ul>
+
 											</div>
 										</div>
 									</div>
@@ -293,31 +294,28 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Staff List</h5>
+									<h5 class="card-title mb-0"></h5>
 								</div>
 								<table class="table table-hover my-0">
 									<thead>
 										<tr>
-											<th>Staff ID</th>
 											<th>First Name</th>
 											<th class="">Last Name</th>
 											<th class="">Email</th>
 											<th class="d-none d-md-table-cell">Phone</th>
+											<th class="d-none d-md-table-cell">College</th>
 										</tr>
 									</thead>
 									<tbody>
-										<?php
-										// Loop through the fetched data and display it in the table
-										while ($row = $result->fetch_assoc()) {
-											echo "<tr>";
-											echo "<td>" . $row["staffId"] . "</td>";
-											echo "<td>" . $row["firstName"] . "</td>";
-											echo "<td class=''>" . $row["lastName"] . "</td>";
-											echo "<td class=''>" . $row["emailAddress"] . "</td>";
-											echo "<td class='d-none d-md-table-cell'>" . $row["contactNumber"] . "</td>";
-											echo "</tr>";
-										}
-										?>
+										<?php while ($row = $result->fetch_assoc()) : ?>
+											<tr>
+												<td><?= $row['firstName'] ?></td>
+												<td class=""><?= $row['lastName'] ?></td>
+												<td class=""><?= $row['emailAddress'] ?></td>
+												<td class="d-none d-md-table-cell"><?= $row['contactNumber'] ?></td>
+												<td class="d-none d-md-table-cell"><?= $row['College'] ?></td>
+											</tr>
+										<?php endwhile; ?>
 									</tbody>
 								</table>
 							</div>
@@ -326,6 +324,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 				</div>
 			</main>
+
+			<?php
+			// Close the database connection
+			$conn->close();
+			?>
+
+
+
 
 			<footer class="footer">
 				<div class="container-fluid">

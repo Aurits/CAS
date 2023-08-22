@@ -74,7 +74,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="post-book.php">
-							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Make Post</span>
 						</a>
 					</li>
 
@@ -247,7 +247,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 			$totalStudents = $result->fetch_assoc()['total_students'];
 
 			// Get all student details
-			$stmt = $conn->prepare("SELECT firstName, lastName, emailAddress, contactNumber FROM VisuallyImpairedStudent");
+			$stmt = $conn->prepare("SELECT firstName, lastName, emailAddress, contactNumber, College FROM VisuallyImpairedStudent");
 			$stmt->execute();
 			$result = $stmt->get_result();
 
@@ -286,6 +286,35 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											</div>
 										</div>
 									</div>
+
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">By College</h5>
+													</div>
+
+													<div class="col-auto">
+
+													</div>
+												</div>
+												<ul>
+													<li><a href="student_college.php?college=CAES">College of Agricultural and Environmental Sciences</a></li>
+													<li><a href="student_college.php?college=CoBAMS">College of Business and Management Sciences</a></li>
+													<li><a href="student_college.php?college=CoCIS">College of Computing and Information Sciences</a></li>
+													<li><a href="student_college.php?college=CEES">College of Education and External Studies</a></li>
+													<li><a href="student_college.php?college=CEDAT">College of Engineering, Design, Art and Technology</a></li>
+													<li><a href="student_college.php?college=CHS">College of Health Sciences</a></li>
+													<li><a href="student_college.php?college=CHUSS">College of Humanities and Social Sciences</a></li>
+													<li><a href="student_college.php?college=CoNAS">College of Natural Sciences</a></li>
+													<li><a href="student_college.php?college=CoVAB">College of Veterinary Medicine, Animal Resources and Biosecurity</a></li>
+													<!-- Add other college links here -->
+												</ul>
+
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -304,6 +333,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 											<th class="">Last Name</th>
 											<th class="">Email</th>
 											<th class="d-none d-md-table-cell">Phone</th>
+											<th class="d-none d-md-table-cell">College</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -313,6 +343,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 												<td class=""><?= $row['lastName'] ?></td>
 												<td class=""><?= $row['emailAddress'] ?></td>
 												<td class="d-none d-md-table-cell"><?= $row['contactNumber'] ?></td>
+												<td class="d-none d-md-table-cell"><?= $row['College'] ?></td>
 											</tr>
 										<?php endwhile; ?>
 

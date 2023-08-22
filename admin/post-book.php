@@ -72,7 +72,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="post-book.php">
-							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Post Book</span>
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Make Post</span>
 						</a>
 					</li>
 
@@ -371,7 +371,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 												echo '<tr>';
 												echo '<td>' . $row['title'] . '</td>';
 												echo '<td class="">' . $row['author'] . '</td>';
-												echo '<td class="d-none d-xl-table-cell">' . $row['description'] . '</td>';
+												echo '<td class="d-none d-xl-table-cell">' . (strlen($row['description']) > 100 ? substr($row['description'], 0, 100) . '...' : $row['description']) . '</td>';
+
 												// echo '<td class="d-none d-md-table-cell">' . $row['audioBookUrl'] . '</td>';
 												echo '<td class="">' . $row['staffId'] . '</td>';
 												echo '<td><a href="view-book.php?id=' . $row['bookId'] . '" class="badge bg-danger">Manage</a></td>';
