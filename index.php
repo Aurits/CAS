@@ -63,7 +63,7 @@
 
             <p tabindex="0">Welcome to the Current Awareness System designed exclusively for visually impaired students at Makerere University. We are committed to providing you with easy access to the latest information and resources in your field of study. Our user-friendly interface and adaptive features ensure that you can navigate, discover, and stay updated effortlessly. Explore the diverse range of materials available and enhance your academic journey with our tailored services. Let's embark on a journey of knowledge together!</p>
 
-
+            <p tabindex="0">Below is a section with the current information posts that you need to know! </p>
 
         </div>
         <!-- Content Row-->
@@ -109,7 +109,15 @@
             mysqli_close($conn);
             ?>
         </div>
+        <section>
+            <h2 tabindex="0">Explore More Books</h2>
+            <p tabindex="0">Visit the Makerere University Main Library's catalog to discover a wide range of books.</p>
+            <p><a href="http://www.makula.mak.ac.ug:8080/search/query?theme=maklib1" target="_blank">Browse Catalog</a></p>
+        </section>
     </div>
+
+
+
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">

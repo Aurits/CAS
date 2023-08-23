@@ -77,7 +77,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="manage-book.php">
-							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Book</span>
+							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Posts</span>
 						</a>
 					</li>
 
@@ -114,103 +114,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-								<div class="dropdown-menu-header">
-									4 New Notifications
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-danger" data-feather="alert-circle"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Update completed</div>
-												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
-												<div class="text-muted small mt-1">30m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-warning" data-feather="bell"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Lorem ipsum</div>
-												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-primary" data-feather="home"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Login from 192.186.1.8</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-success" data-feather="user-plus"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">New connection</div>
-												<div class="text-muted small mt-1">Christina accepted your request.</div>
-												<div class="text-muted small mt-1">14h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all notifications</a>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="message-square"></i>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
-								<div class="dropdown-menu-header">
-									<div class="position-relative">
-										4 New Messages
-									</div>
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Vanessa Tucker</div>
-												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
-												<div class="text-muted small mt-1">15m ago</div>
-											</div>
-										</div>
-									</a>
 
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="messages.php" class="text-muted">Show all messages</a>
-								</div>
-							</div>
-						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
 								<i class="align-middle" data-feather="settings"></i>
@@ -233,18 +137,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 				</div>
 			</nav>
 
-			<?php
-			require_once "./config.php";
-
-			// Get the selected college from the query string
-			$selectedCollege = $_GET['college'];
-
-			// Get all student details for the selected college
-			$stmt = $conn->prepare("SELECT firstName, lastName, emailAddress, contactNumber, College FROM VisuallyImpairedStudent WHERE College = ?");
-			$stmt->bind_param("s", $selectedCollege);
-			$stmt->execute();
-			$result = $stmt->get_result();
-			?>
 
 			<main class="content">
 				<div class="container-fluid p-0">
@@ -252,12 +144,115 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					<h1 class="h3 mb-3"><strong>Students</strong></h1>
 
 					<div class="row">
-						<div class="col-xl-8 col-xxl-8">
+						<div class="">
 							<div class="w-100">
 								<div class="row">
 
+									<div class="col-6">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Send Messages to all</h5>
+													</div>
+												</div>
 
-									<div class="col-sm-6">
+												<?php
+												require_once "config.php";
+												require_once "php-mailer/PHPMailer.php";
+												require_once "php-mailer/SMTP.php";
+												require_once "php-mailer/Exception.php";
+
+												use PHPMailer\PHPMailer\PHPMailer;
+												use PHPMailer\PHPMailer\SMTP;
+												use PHPMailer\PHPMailer\Exception;
+
+												// Initialize variables for form data and status messages
+												$successMessage = '';
+												$errorMessage = '';
+
+												if ($_SERVER["REQUEST_METHOD"] == "POST") {
+													// Get the message from the form
+													$message = $_POST['message'];
+
+													// Get the selected college from the query string
+													$selectedCollege = $_GET['college'];
+
+													// Get all student details for the selected college
+													$stmt = $conn->prepare("SELECT firstName, lastName, emailAddress, contactNumber, College FROM VisuallyImpairedStudent WHERE College = ?");
+													$stmt->bind_param("s", $selectedCollege);
+													$stmt->execute();
+													$result = $stmt->get_result();
+
+													// Create a new PHPMailer instance
+													$mail = new PHPMailer(true);
+
+													try {
+														// SMTP settings
+														$mail->isSMTP();
+														$mail->Host       = 'smtp.gmail.com';
+														$mail->SMTPAuth   = true;
+														$mail->Username   = 'ateraxantonio@gmail.com';
+														$mail->Password   = 'pgwxgkkarzwvjmkp';
+														$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+														$mail->Port       = 587;
+
+														// Email details
+														$mail->setFrom('ateraxantonio@gmail.com', 'Library');
+														$mail->Subject = 'Email Notification From University Library';
+
+														// Loop through the students and send emails
+														while ($row = $result->fetch_assoc()) {
+															$studentName = $row['firstName'] . ' ' . $row['lastName'];
+															$studentEmail = $row['emailAddress'];
+
+															$mail->addAddress($studentEmail, $studentName);
+
+															$mail->Body = $message;
+															$mail->AltBody = $message;
+
+															if ($mail->send()) {
+																$successMessage .= "Email sent to $studentName ($studentEmail)<br>";
+															} else {
+																$errorMessage .= "Email could not be sent to $studentName ($studentEmail). Error: {$mail->ErrorInfo}<br>";
+															}
+
+															$mail->clearAddresses();
+														}
+													} catch (Exception $e) {
+														$errorMessage = "An error occurred: {$e->getMessage()}";
+													}
+												}
+												?>
+
+												<?php if (!empty($successMessage)) : ?>
+													<div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; margin-bottom: 10px;">
+														<?php echo $successMessage; ?>
+													</div>
+												<?php endif; ?>
+
+												<?php if (!empty($errorMessage)) : ?>
+													<div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; margin-bottom: 10px;">
+														<?php echo $errorMessage; ?>
+													</div>
+												<?php endif; ?>
+
+												<form method="post">
+													<div class="form-group">
+														<label for="message">Message:</label>
+														<textarea class="form-control" name="message" rows="4"></textarea>
+													</div>
+													<br><br>
+													<button type="submit" class="btn btn-primary">Send Messages</button>
+												</form>
+											</div>
+										</div>
+									</div>
+
+
+
+
+									<div class="col-6">
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
@@ -291,6 +286,19 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 					</div>
 
 					<div class="row">
+
+						<?php
+						require_once "./config.php";
+
+						// Get the selected college from the query string
+						$selectedCollege = $_GET['college'];
+
+						// Get all student details for the selected college
+						$stmt = $conn->prepare("SELECT firstName, lastName, emailAddress, contactNumber, College FROM VisuallyImpairedStudent WHERE College = ?");
+						$stmt->bind_param("s", $selectedCollege);
+						$stmt->execute();
+						$result = $stmt->get_result();
+						?>
 						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
@@ -307,17 +315,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 										</tr>
 									</thead>
 									<tbody>
-										<?php while ($row = $result->fetch_assoc()) : ?>
+										<?php if ($result->num_rows === 0) : ?>
 											<tr>
-												<td><?= $row['firstName'] ?></td>
-												<td class=""><?= $row['lastName'] ?></td>
-												<td class=""><?= $row['emailAddress'] ?></td>
-												<td class="d-none d-md-table-cell"><?= $row['contactNumber'] ?></td>
-												<td class="d-none d-md-table-cell"><?= $row['College'] ?></td>
+												<td colspan="5">No records found</td>
 											</tr>
-										<?php endwhile; ?>
+										<?php else : ?>
+											<?php while ($row = $result->fetch_assoc()) : ?>
+												<tr>
+													<td><?= $row['firstName'] ?></td>
+													<td class=""><?= $row['lastName'] ?></td>
+													<td class=""><?= $row['emailAddress'] ?></td>
+													<td class="d-none d-md-table-cell"><?= $row['contactNumber'] ?></td>
+													<td class="d-none d-md-table-cell"><?= $row['College'] ?></td>
+												</tr>
+											<?php endwhile; ?>
+										<?php endif; ?>
 									</tbody>
 								</table>
+
 							</div>
 						</div>
 					</div>

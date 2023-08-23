@@ -78,7 +78,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="manage-book.php">
-							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Book</span>
+							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage Posts</span>
 						</a>
 					</li>
 
@@ -115,104 +115,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-								<div class="dropdown-menu-header">
-									4 New Notifications
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-danger" data-feather="alert-circle"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Update completed</div>
-												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
-												<div class="text-muted small mt-1">30m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-warning" data-feather="bell"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Lorem ipsum</div>
-												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-primary" data-feather="home"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Login from 192.186.1.8</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-success" data-feather="user-plus"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">New connection</div>
-												<div class="text-muted small mt-1">Christina accepted your request.</div>
-												<div class="text-muted small mt-1">14h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all notifications</a>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="message-square"></i>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
-								<div class="dropdown-menu-header">
-									<div class="position-relative">
-										New Messages
-									</div>
-								</div>
-								<div class="list-group">
 
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="../img/user.png" class="avatar img-fluid rounded-circle" alt="William Harris">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">William Harris</div>
-												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="messages.php" class="text-muted">Show all messages</a>
-								</div>
-							</div>
-						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
 								<i class="align-middle" data-feather="settings"></i>
@@ -267,7 +170,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 						$stmt->bind_param("ssssi", $title, $author, $description, $audioBookUrl, $staffId);
 
 						if ($stmt->execute()) {
-							echo "Book details saved successfully!";
+							echo '<div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; margin-top: 10px;">Post details saved successfully!</div>';
 						} else {
 							echo "Error: " . $stmt->error;
 						}
@@ -288,7 +191,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 							<div class="col-12">
 								<div class="card">
 									<div class="card-body">
-										<h4 class="header-title">Book Details</h4>
+										<h4 class="header-title">Details</h4>
 
 
 										<div class="row align-items-center justify-content-center d-flex">
@@ -296,7 +199,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 												<form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
 
 													<div class="mb-3">
-														<label for="title" class="form-label">Book Title</label>
+														<label for="title" class="form-label">Title</label>
 														<input type="text" id="title" name="title" class="form-control" required>
 													</div>
 
@@ -311,7 +214,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 													</div>
 
 													<div class="mb-3">
-														<label for="audioBookUrl" class="form-label">Audio Book URL</label>
+														<label for="audioBookUrl" class="form-label">Audio URL</label>
 														<input type="text" id="audioBookUrl" name="audioBookUrl" class="form-control">
 													</div>
 
@@ -320,7 +223,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 														<input type="number" id="staffId" name="staffId" class="form-control" required>
 													</div>
 
-													<button type="submit" class="btn btn-primary">Save Book</button>
+													<button type="submit" class="btn btn-primary">Save Post</button>
 												</form>
 											</div>
 										</div>
@@ -341,7 +244,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Latest Books</h5>
+									<h5 class="card-title mb-0">Latest Posts</h5>
 								</div>
 								<table class="table table-hover my-0">
 									<thead>
